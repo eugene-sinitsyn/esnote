@@ -16,7 +16,7 @@ export class EsnNotesService {
   private lists: EsnListModel[] = [];
 
   public createList(list: EsnListModel): void {
-    this.lists.push(list);
+    this.lists.unshift(list);
     this.saveChangesToLocalStorage();
   }
 
