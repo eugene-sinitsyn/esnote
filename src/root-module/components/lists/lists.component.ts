@@ -36,8 +36,14 @@ export class EsnListsComponent {
     this.router.navigate(['/list', 0]);
   }
 
-  public openRenameDialog(listIndex: number): void {
-    // TODO: implement
+  public async openRenameDialog(listIndex: number, value: string): Promise<void> {
+    const data = new EsnInputDialogModel({ name: 'List name', value, maxLength: 32 });
+    const name = await this.dialogService
+      .open(EsnInputDialogComponent, { data })
+      .afterClosed()
+      .toPromise();
+    if (!name) return;
+    this.notesService.renameList(listIndex, name);
   }
 
   public async openRemoveDialog(listIndex: number, listName: string): Promise<void> {

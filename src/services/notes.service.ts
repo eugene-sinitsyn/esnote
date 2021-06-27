@@ -20,9 +20,9 @@ export class EsnNotesService {
     this.saveChangesToLocalStorage();
   }
 
-  public updateList(index: number, list: EsnListModel): void {
+  public renameList(index: number, listName: string): void {
     this.verifyExists(this.lists, index);
-    this.lists[index] = list;
+    this.lists[index].name = listName;
     this.saveChangesToLocalStorage();
   }
 
