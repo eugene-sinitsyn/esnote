@@ -1,14 +1,14 @@
 import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { EsnListModel } from 'src/models/list.model';
-import { EsnNoteModel } from 'src/models/note.model';
+import { EsnListModel } from '../models/list.model';
+import { EsnNoteModel } from '../models/note.model';
 
 @Injectable({ providedIn: 'root' })
 export class EsnNotesService {
   public constructor() { this.readFromLocalStorage(); }
 
-  private readonly localStorageKey: string = 'esnLists';
+  private readonly localStorageKey: string = 'esnNotes';
   private readonly listsSubject: BehaviorSubject<EsnListModel[]> =
     new BehaviorSubject<EsnListModel[]>([]);
   public readonly lists$: Observable<EsnListModel[]> = this.listsSubject.asObservable();
@@ -33,6 +33,7 @@ export class EsnNotesService {
   }
 
   public reorderList(indexFrom: number, indexTo: number): void {
+    if (indexFrom === indexTo) return;
     this.verifyExists(this.lists, indexFrom);
     this.verifyExists(this.lists, indexTo);
     moveItemInArray(this.lists, indexFrom, indexTo);
@@ -61,6 +62,7 @@ export class EsnNotesService {
   }
 
   public reorderNote(listIndex: number, noteIndexFrom: number, noteIndexTo: number): void {
+    if (noteIndexFrom === noteIndexTo) return;
     this.verifyExists(this.lists, listIndex);
     this.verifyExists(this.lists[listIndex].notes, noteIndexFrom);
     this.verifyExists(this.lists[listIndex].notes, noteIndexTo);

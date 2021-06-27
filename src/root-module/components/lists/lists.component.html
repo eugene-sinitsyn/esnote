@@ -1,0 +1,45 @@
+<div
+  #dropList
+  cdkDropList
+  (cdkDropListDropped)="reorder($event.previousIndex, $event.currentIndex)"
+>
+  <div
+    *ngFor="let list of lists$ | async; let listIndex = index"
+    cdkDrag
+    cdkDragLockAxis="y"
+    [cdkDragBoundary]="dropList"
+    class="list list-draggable"
+  >
+    <button type="button" mat-button cdkDragHandle class="handle"
+    ><mat-icon>drag_indicator</mat-icon></button>
+
+    <button
+      type="button"
+      mat-button
+      [routerLink]="['/list', listIndex]"
+      class="name"
+    >
+      <div class="overflow-ellipsis">{{ list }}</div>
+    </button>
+
+    <button
+      type="button"
+      mat-button
+      [matMenuTriggerFor]="listActions"
+      class="actions"
+    ><mat-icon>more_vert</mat-icon></button>
+    <mat-menu #listActions="matMenu">
+      <button type="button" mat-menu-item (click)="openRenameDialog(listIndex)"
+      ><mat-icon>edit</mat-icon>Rename</button>
+      <button type="button" mat-menu-item (click)="openRemoveDialog(listIndex)"
+      ><mat-icon>delete</mat-icon>Delete</button>
+    </mat-menu>
+  </div>
+</div>
+
+<button
+  type="button"
+  mat-button
+  class="create"
+  (click)="openCreateDialog()"
+><mat-icon>add</mat-icon></button>

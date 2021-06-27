@@ -2,22 +2,24 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { materialModules } from '../config/material.config';
-import { routes } from '../config/router.config';
+import { esnMaterialModules } from '../config/material.config';
+import { esnRoutes } from '../config/router.config';
+import { esnComponents } from './components';
 import { esnDirectives } from './directives';
-import { RootComponent } from './root.component';
+import { EsnRootComponent } from './root.component';
 
 @NgModule({
   declarations: [
-    RootComponent,
-    ...esnDirectives
+    EsnRootComponent,
+    ...esnDirectives,
+    ...esnComponents
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(esnRoutes),
     BrowserAnimationsModule,
-    ...materialModules
+    ...esnMaterialModules
   ],
-  bootstrap: [RootComponent]
+  bootstrap: [EsnRootComponent]
 })
-export class RootModule {}
+export class EsnRootModule {}

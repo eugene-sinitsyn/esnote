@@ -1,0 +1,13 @@
+:host { display: block; padding: 8px; }
+.list { display: flex; align-items: center; }
+.handle, .actions { min-width: unset; padding: 0; }
+.handle { cursor: grab; }
+.name {
+  flex-grow: 1;
+  text-align: left;
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+}
+.overflow-ellipsis { overflow: hidden; text-overflow: ellipsis; }
+.create { width: 100%; }

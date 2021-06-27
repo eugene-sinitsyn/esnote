@@ -1,3 +1,3 @@
-import { ResponsiveSidenavDirective } from './responsive-sidenav.directive';
+import { EsnResponsiveSidenavDirective } from './responsive-sidenav.directive';
 
-export const esnDirectives = [ResponsiveSidenavDirective];
+export const esnDirectives = [EsnResponsiveSidenavDirective];

@@ -5,7 +5,7 @@ import { Subscription, fromEvent } from 'rxjs';
 import { filter, startWith, map } from 'rxjs/operators';
 
 @Directive({ selector: 'mat-sidenav[esnResponsive]' })
-export class ResponsiveSidenavDirective implements OnInit {
+export class EsnResponsiveSidenavDirective implements OnInit {
   public constructor(
     private readonly sidenav: MatSidenav,
     private readonly router: Router,
