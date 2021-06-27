@@ -11,13 +11,18 @@
   (cdkDropListDropped)="reorder($event.previousIndex, $event.currentIndex)"
 >
   <div
-    *ngFor="let note of notes; let noteIndex = index"
+    *ngFor="let note of notes; let noteIndex = index; let count = count"
     class="esn-list-item"
     cdkDrag
     cdkDragLockAxis="y"
     [cdkDragBoundary]="dropList"
   >
-    <button type="button" mat-button cdkDragHandle class="handle esn-light-button"
+    <button
+      *ngIf="count > 1"
+      type="button"
+      mat-button
+      cdkDragHandle
+      class="handle esn-light-button"
     ><mat-icon>drag_indicator</mat-icon></button>
 
     <button
