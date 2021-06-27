@@ -1,4 +1,4 @@
-<mat-dialog-content>{{ message }}</mat-dialog-content>
+<mat-dialog-content>{{ data?.message }}</mat-dialog-content>
 
 <mat-dialog-actions>
   <button
@@ -12,5 +12,5 @@
     color="primary"
     cdkFocusInitial
     [mat-dialog-close]="true"
-  >Confirm</button>
+  >{{ data?.confirmButtonText || 'Confirm' }}</button>
 </mat-dialog-actions>
