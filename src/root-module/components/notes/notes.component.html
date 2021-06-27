@@ -11,7 +11,7 @@
   (cdkDropListDropped)="reorder($event.previousIndex, $event.currentIndex)"
 >
   <div
-    *ngFor="let note of notes$ | async; let noteIndex = index"
+    *ngFor="let note of notes; let noteIndex = index"
     class="esn-list-item"
     cdkDrag
     cdkDragLockAxis="y"

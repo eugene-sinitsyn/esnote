@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { combineLatest, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { EsnNoteModel } from '../../../models/note.model';
+import { EsnNotesService } from '../../../services/notes.service';
 
 @Component({
   selector: 'esn-list-page',
@@ -9,9 +11,32 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./list-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EsnListPageComponent {
-  public constructor(private readonly activatedRoute: ActivatedRoute) {}
+export class EsnListPageComponent implements OnInit, OnDestroy {
+  public constructor(
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly notesService: EsnNotesService,
+    private readonly router: Router,
+    private readonly changeDetectorRef: ChangeDetectorRef
+  ) {}
 
-  public readonly listIndex$: Observable<number> =
-    this.activatedRoute.params.pipe(map(params => Number(params.index)));
+  private readonly subscription: Subscription = new Subscription();
+  public listIndex: number;
+  public notes: EsnNoteModel[];
+
+  public ngOnInit(): void {
+    this.subscription.add(combineLatest([
+      this.notesService.lists$,
+      this.activatedRoute.params.pipe(map(params => Number(params.index)))
+    ]).subscribe(([lists, listIndex]) => {
+      this.listIndex = listIndex;
+      if (lists && Number.isInteger(listIndex) && listIndex >= lists.length)
+        this.router.navigate(['/']);
+      else {
+        this.notes = (lists && lists[listIndex]?.notes) ?? [];
+        this.changeDetectorRef.markForCheck();
+      }
+    }));
+  }
+
+  public ngOnDestroy(): void { this.subscription.unsubscribe(); }
 }
