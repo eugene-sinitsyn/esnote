@@ -1,0 +1,9 @@
+:host { display: block; height: 100%; }
+mat-sidenav-container { height: 100%; }
+mat-sidenav-content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  .page { flex-grow: 1; overflow: auto; }
+}
+h1 { margin: 0 16px; }
