@@ -11,7 +11,7 @@
   (cdkDropListDropped)="reorder($event.previousIndex, $event.currentIndex)"
 >
   <div
-    *ngFor="let list of lists$ | async; let listIndex = index"
+    *ngFor="let note of notes$ | async; let noteIndex = index"
     class="esn-draggable"
     cdkDrag
     cdkDragLockAxis="y"
@@ -24,20 +24,20 @@
       type="button"
       class="name"
       mat-button
-      [routerLink]="['/list', listIndex]"
       routerLinkActive="active"
-    ><div class="overflow-ellipsis">{{ list }}</div></button>
+      (click)="openEditDialog(noteIndex)"
+    ><div class="overflow-ellipsis">{{ note }}</div></button>
 
     <button
-      class="actions"
       type="button"
+      class="actions"
       mat-button
       [matMenuTriggerFor]="listActions"
     ><mat-icon>more_vert</mat-icon></button>
     <mat-menu #listActions="matMenu">
-      <button type="button" mat-menu-item (click)="openRenameDialog(listIndex)"
-      ><mat-icon>edit</mat-icon>Rename</button>
-      <button type="button" mat-menu-item (click)="openRemoveDialog(listIndex)"
+      <button type="button" mat-menu-item (click)="openEditDialog(noteIndex)"
+      ><mat-icon>edit</mat-icon>Edit</button>
+      <button type="button" mat-menu-item (click)="openRemoveDialog(noteIndex)"
       ><mat-icon>delete</mat-icon>Delete</button>
     </mat-menu>
   </div>

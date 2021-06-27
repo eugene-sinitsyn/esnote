@@ -6,13 +6,15 @@ import { esnMaterialModules } from '../config/material.config';
 import { esnRoutes } from '../config/router.config';
 import { esnComponents } from './components';
 import { esnDirectives } from './directives';
+import { esnPages } from './pages';
 import { EsnRootComponent } from './root.component';
 
 @NgModule({
   declarations: [
     EsnRootComponent,
     ...esnDirectives,
-    ...esnComponents
+    ...esnComponents,
+    ...esnPages
   ],
   imports: [
     BrowserModule,

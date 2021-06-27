@@ -32,11 +32,11 @@ export class EsnNotesService {
     this.saveChangesToLocalStorage();
   }
 
-  public reorderList(indexFrom: number, indexTo: number): void {
-    if (indexFrom === indexTo) return;
-    this.verifyExists(this.lists, indexFrom);
-    this.verifyExists(this.lists, indexTo);
-    moveItemInArray(this.lists, indexFrom, indexTo);
+  public reorderList(fromIndex: number, toIndex: number): void {
+    if (fromIndex === toIndex) return;
+    this.verifyExists(this.lists, fromIndex);
+    this.verifyExists(this.lists, toIndex);
+    moveItemInArray(this.lists, fromIndex, toIndex);
     this.saveChangesToLocalStorage();
   }
 
@@ -61,12 +61,12 @@ export class EsnNotesService {
     this.saveChangesToLocalStorage();
   }
 
-  public reorderNote(listIndex: number, noteIndexFrom: number, noteIndexTo: number): void {
-    if (noteIndexFrom === noteIndexTo) return;
+  public reorderNote(listIndex: number, fromNoteIndex: number, toNoteIndex: number): void {
+    if (fromNoteIndex === toNoteIndex) return;
     this.verifyExists(this.lists, listIndex);
-    this.verifyExists(this.lists[listIndex].notes, noteIndexFrom);
-    this.verifyExists(this.lists[listIndex].notes, noteIndexTo);
-    moveItemInArray(this.lists[listIndex].notes, noteIndexFrom, noteIndexTo);
+    this.verifyExists(this.lists[listIndex].notes, fromNoteIndex);
+    this.verifyExists(this.lists[listIndex].notes, toNoteIndex);
+    moveItemInArray(this.lists[listIndex].notes, fromNoteIndex, toNoteIndex);
     this.saveChangesToLocalStorage();
   }
 
