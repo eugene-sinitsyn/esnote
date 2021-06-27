@@ -1,0 +1,17 @@
+@import '~@angular/material/theming';
+
+@mixin esn-drag-drop($theme) {
+  $colors: mat-get-color-config($theme);
+  $foreground-palette: map-get($colors, foreground);
+
+  .cdk-drag-preview {
+    border: 1px solid map-get($foreground-palette, divider);
+    border-radius: 4px;
+    box-shadow: 0 2px 8px map-get($foreground-palette, divider);
+  }
+  .cdk-drag-placeholder { opacity: 0; }
+  .cdk-drop-list-dragging, .cdk-drop-list-dragging * { cursor: grabbing !important; }
+  .cdk-drag-animating, .cdk-drop-list-dragging > * {
+    transition: transform 100ms cubic-bezier(0, 0, 0.2, 1);
+  }
+}

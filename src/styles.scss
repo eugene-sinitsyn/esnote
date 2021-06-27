@@ -1,6 +1,58 @@
+@import '~@angular/material/theming';
+@import './styles/themes';
 @import './styles/material-overrides';
-@import './styles/draggable';
+@import './styles/list-item';
+@import './styles/scrollbar';
+@import './styles/drag-drop.scss';
+
+@mixin esn-global-styles($theme) {
+  $colors: mat-get-color-config($theme);
+  $primary-palette: map-get($colors, primary);
+  $accent-palette: map-get($colors, accent);
+  $warn-palette: map-get($colors, warn);
+  $foreground-palette: map-get($colors, foreground);
+  $background-palette: map-get($colors, background);
+
+  @include esn-material-overrides($theme);
+  @include esn-scrollbar($theme);
+  @include esn-drag-drop($theme);
+  @include esn-list-item();
+
+  .esn-fg-primary { color: mat-color($primary-palette); }
+  .esn-fg-accent { color: mat-color($accent-palette); }
+  .esn-fg-warn { color: mat-color($warn-palette); }
+  .esn-fg-text { color: map-get($foreground-palette, text); }
+  .esn-fg-hint { color: map-get($foreground-palette, secondary-text); }
+  .esn-fg-disabled { color: map-get($foreground-palette, disabled); }
+  .esn-fg-divider { color: map-get($foreground-palette, divider); }
+  .esn-fg-icon { color: map-get($foreground-palette, icon); }
+
+  .esn-bg-primary { background-color: mat-color($primary-palette); }
+  .esn-bg-accent { background-color: mat-color($accent-palette); }
+  .esn-bg-warn {  background-color: mat-color($warn-palette); }
+  .esn-bg { background-color: map-get($background-palette, background); }
+  .esn-bg-hover { background-color: map-get($background-palette, hover); }
+  .esn-bg-card { background-color: map-get($background-palette, card); }
+  .esn-bg-control { background-color: map-get($background-palette, unselected-chip); }
+
+  .esn-border-color { border-color: map-get($foreground-palette, divider); }
+
+  .esn-light-button:not(:hover):not(:active):not(:focus):not(:disabled) {
+    color: map-get($foreground-palette, secondary-text);
+  }
+}
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 * { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  &:not(.dark) {
+    @include angular-material-theme($esn-light-theme);
+    @include esn-global-styles($esn-light-theme);
+  }
+  &.dark {
+    @include angular-material-theme($esn-dark-theme);
+    @include esn-global-styles($esn-dark-theme);
+  }
+}

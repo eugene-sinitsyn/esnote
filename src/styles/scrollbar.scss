@@ -1,0 +1,17 @@
+@import '~@angular/material/theming';
+
+@mixin esn-scrollbar($theme) {
+  $colors: mat-get-color-config($theme);
+  $primary-palette: map-get($colors, primary);
+  $background-palette: map-get($colors, background);
+
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track {
+    background-color: map-get($background-palette, background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: mat-color($primary-palette);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-corner { background-color: transparent; }
+}

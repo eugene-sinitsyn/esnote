@@ -1,7 +1,7 @@
 <button
   type="button"
   mat-button
-  class="create"
+  class="create esn-light-button"
   (click)="openCreateDialog()"
 ><mat-icon>add</mat-icon></button>
 
@@ -12,24 +12,24 @@
 >
   <div
     *ngFor="let list of lists$ | async; let listIndex = index"
-    class="esn-draggable"
+    class="esn-list-item"
     cdkDrag
     cdkDragLockAxis="y"
     [cdkDragBoundary]="dropList"
   >
-    <button type="button" mat-button cdkDragHandle class="handle"
+    <button type="button" mat-button cdkDragHandle class="handle esn-light-button"
     ><mat-icon>drag_indicator</mat-icon></button>
 
     <button
       type="button"
-      class="name"
+      class="name esn-fg-text"
       mat-button
       [routerLink]="['/list', listIndex]"
       routerLinkActive="active"
     ><div class="overflow-ellipsis">{{ list }}</div></button>
 
     <button
-      class="actions"
+      class="actions esn-light-button"
       type="button"
       mat-button
       [matMenuTriggerFor]="listActions"
