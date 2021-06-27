@@ -1,0 +1,16 @@
+<mat-dialog-content>{{ message }}</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button
+    type="button"
+    mat-button
+    [mat-dialog-close]="false"
+  >Cancel</button>
+  <button
+    type="button"
+    mat-raised-button
+    color="primary"
+    cdkFocusInitial
+    [mat-dialog-close]="true"
+  >Confirm</button>
+</mat-dialog-actions>
