@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { EsnNoteModel } from '../../../models/note.model';
 import { EsnNotesService } from '../../../services/notes.service';
+import { EsnNoteDialogComponent } from '../note-dialog/note-dialog.component';
 
 @Component({
   selector: 'esn-notes',
@@ -9,13 +11,21 @@ import { EsnNotesService } from '../../../services/notes.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EsnNotesComponent {
-  public constructor(private readonly notesService: EsnNotesService) {}
+  public constructor(
+    private readonly notesService: EsnNotesService,
+    private readonly dialogService: MatDialog
+  ) {}
 
   @Input() public listIndex: number;
   @Input() public notes: EsnNoteModel[];
 
-  public openCreateDialog(): void {
-    // TODO: implement
+  public async openCreateDialog(): Promise<void> {
+    const note = await this.dialogService
+      .open(EsnNoteDialogComponent, { data: null })
+      .afterClosed()
+      .toPromise();
+    if (!note) return;
+    this.notesService.createNote(this.listIndex, note);
   }
 
   public openEditDialog(listIndex: number): void {

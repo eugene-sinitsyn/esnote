@@ -25,7 +25,12 @@ export class EsnListsComponent {
   public readonly lists$: Observable<EsnListModel[]> = this.notesService.lists$;
 
   public async openCreateDialog(): Promise<void> {
-    const data = new EsnInputDialogModel({ name: 'List name', value: '', maxLength: 32 });
+    const data = new EsnInputDialogModel({
+      name: 'List name',
+      value: '',
+      maxLength: 32,
+      submitButtonText: 'Create'
+    });
     const name = await this.dialogService
       .open(EsnInputDialogComponent, { data })
       .afterClosed()
@@ -37,7 +42,12 @@ export class EsnListsComponent {
   }
 
   public async openRenameDialog(listIndex: number, value: string): Promise<void> {
-    const data = new EsnInputDialogModel({ name: 'List name', value, maxLength: 32 });
+    const data = new EsnInputDialogModel({
+      name: 'List name',
+      value,
+      maxLength: 32,
+      submitButtonText: 'Rename'
+    });
     const name = await this.dialogService
       .open(EsnInputDialogComponent, { data })
       .afterClosed()

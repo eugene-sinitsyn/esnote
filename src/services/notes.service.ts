@@ -93,8 +93,8 @@ export class EsnNotesService {
   }
 
   private saveChangesToLocalStorage(): void {
-    const serializedLists = JSON.stringify(this.lists ?? []);
+    const serializedLists = JSON.stringify(this.lists);
     localStorage.setItem(this.localStorageKey, serializedLists);
-    this.listsSubject.next(this.lists);
+    this.listsSubject.next(this.lists.map(list => new EsnListModel(list)));
   }
 }

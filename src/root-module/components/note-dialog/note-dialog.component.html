@@ -1,0 +1,33 @@
+<mat-dialog-content [formGroup]="formGroup">
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" cdkFocusInitial />
+    <mat-hint align="end">{{ formGroup.value.name?.length || 0 }} / 64</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <textarea
+      matInput
+      formControlName="text"
+      cdkTextareaAutosize
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="16"
+    ></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button
+    type="button"
+    mat-button
+    [mat-dialog-close]="null"
+  >Cancel</button>
+  <button
+    type="button"
+    mat-raised-button
+    color="primary"
+    [disabled]="!formGroup.valid"
+    [mat-dialog-close]="formGroup.value"
+  >{{ editMode ? 'Update' : 'Create' }}</button>
+</mat-dialog-actions>
