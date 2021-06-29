@@ -12,7 +12,8 @@
     <mat-toolbar color="primary">
       <button type="button" mat-button class="menu" (click)="sidenav.toggle()"
       ><mat-icon>menu</mat-icon></button>
-      <h1>ESNOTE</h1>
+      <h1 class="title">ESNOTE</h1>
+      <esn-save-indicator></esn-save-indicator>
     </mat-toolbar>
     <div class="page">
       <router-outlet></router-outlet>

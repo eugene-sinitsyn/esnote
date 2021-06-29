@@ -6,8 +6,9 @@ mat-sidenav-content {
   overflow: hidden;
   .page { flex-grow: 1; overflow: auto; }
 }
-h1 { margin: 0 16px; }
 mat-toolbar {
   padding: 0;
   button, esn-theme-toggle { height: 64px; width: 64px; }
 }
+.title { margin: 0 16px; flex-grow: 1; }
+esn-save-indicator { margin-right: 16px; }

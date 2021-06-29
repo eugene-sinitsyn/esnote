@@ -1,6 +1,6 @@
 import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { EsnListModel } from '../models/list.model';
 import { EsnNoteModel } from '../models/note.model';
 
@@ -11,7 +11,9 @@ export class EsnNotesService {
   private readonly localStorageKey: string = 'esnNotes';
   private readonly listsSubject: BehaviorSubject<EsnListModel[]> =
     new BehaviorSubject<EsnListModel[]>([]);
+  private readonly saveSubject: Subject<void> = new Subject<void>();
   public readonly lists$: Observable<EsnListModel[]> = this.listsSubject.asObservable();
+  public readonly save$: Observable<void> = this.saveSubject.asObservable();
 
   private listsValue: EsnListModel[] = [];
   public get lists(): EsnListModel[] { return this.listsValue; }
@@ -97,5 +99,6 @@ export class EsnNotesService {
     const serializedLists = JSON.stringify(this.listsValue);
     localStorage.setItem(this.localStorageKey, serializedLists);
     this.listsSubject.next(this.listsValue.map(list => new EsnListModel(list)));
+    this.saveSubject.next();
   }
 }
