@@ -3,11 +3,11 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EsnConfirmationDialogModel } from '../../../models/confirmation-dialog.model';
 
 @Component({
-  selector: 'esn-confirmation-dialog',
-  templateUrl: './confirmation-dialog.component.html',
-  styleUrls: ['./confirmation-dialog.component.scss'],
+  selector: 'esn-confirm-dialog',
+  templateUrl: './confirm-dialog.component.html',
+  styleUrls: ['./confirm-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EsnConfirmationDialogComponent {
+export class EsnConfirmDialogComponent {
   public constructor(@Inject(MAT_DIALOG_DATA) public readonly data: EsnConfirmationDialogModel) {}
 }

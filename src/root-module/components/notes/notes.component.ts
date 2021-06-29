@@ -2,9 +2,11 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EsnConfirmationDialogModel } from '../../../models/confirmation-dialog.model';
 import { EsnNoteModel } from '../../../models/note.model';
+import { EsnSelectDialogModel } from '../../../models/select-dialog.model';
 import { EsnNotesService } from '../../../services/notes.service';
-import { EsnConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { EsnConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { EsnNoteDialogComponent } from '../note-dialog/note-dialog.component';
+import { EsnSelectDialogComponent } from '../select-dialog/select-dialog.component';
 
 @Component({
   selector: 'esn-notes',
@@ -40,13 +42,28 @@ export class EsnNotesComponent {
     this.notesService.updateNote(this.listIndex, noteIndex, updatedNote);
   }
 
+  public async openMoveDialog(noteIndex: number): Promise<void> {
+    const otherLists = this.notesService.lists.filter((l, i) => i !== this.listIndex);
+    const data = new EsnSelectDialogModel({
+      title: 'Select a list',
+      options: otherLists
+    });
+    const list = await this.dialogService
+      .open(EsnSelectDialogComponent, { data })
+      .afterClosed()
+      .toPromise();
+    if (!list) return;
+    const listIndexTo = this.notesService.lists.indexOf(list);
+    this.notesService.moveNote(this.listIndex, noteIndex, listIndexTo);
+  }
+
   public async openRemoveDialog(noteIndex: number): Promise<void> {
     const data = new EsnConfirmationDialogModel({
       message: `Delete "${this.notes[noteIndex]}"?`,
       confirmButtonText: 'Delete'
     });
     const confirmed = await this.dialogService
-      .open(EsnConfirmationDialogComponent, { data })
+      .open(EsnConfirmDialogComponent, { data })
       .afterClosed()
       .toPromise();
     if (confirmed) this.notesService.removeNote(this.listIndex, noteIndex);

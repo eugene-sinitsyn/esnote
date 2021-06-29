@@ -6,7 +6,7 @@ import { EsnConfirmationDialogModel } from '../../../models/confirmation-dialog.
 import { EsnInputDialogModel } from '../../../models/input-dialog.model';
 import { EsnListModel } from '../../../models/list.model';
 import { EsnNotesService } from '../../../services/notes.service';
-import { EsnConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { EsnConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { EsnInputDialogComponent } from '../input-dialog/input-dialog.component';
 
 @Component({
@@ -62,7 +62,7 @@ export class EsnListsComponent {
       confirmButtonText: 'Delete'
     });
     const confirmed = await this.dialogService
-      .open(EsnConfirmationDialogComponent, { data })
+      .open(EsnConfirmDialogComponent, { data })
       .afterClosed()
       .toPromise();
     if (confirmed) this.notesService.removeList(listIndex);
