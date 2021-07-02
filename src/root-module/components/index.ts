@@ -6,6 +6,7 @@ import { EsnNotesComponent } from './notes/notes.component';
 import { EsnSaveIndicatorComponent } from './save-indicator/save-indicator.component';
 import { EsnSelectDialogComponent } from './select-dialog/select-dialog.component';
 import { EsnSideMenuComponent } from './side-menu/side-menu.component';
+import { EsnTextEditorComponent } from './text-editor/text-editor.component';
 import { EsnThemeComponentToggle } from './theme-toggle/theme-toggle.component';
 
 export const esnComponents = [
@@ -17,5 +18,6 @@ export const esnComponents = [
   EsnSaveIndicatorComponent,
   EsnSelectDialogComponent,
   EsnSideMenuComponent,
+  EsnTextEditorComponent,
   EsnThemeComponentToggle
 ];

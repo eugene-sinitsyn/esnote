@@ -3,6 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { NgxEditorModule } from 'ngx-editor';
 import { esnMaterialModules } from '../config/material.config';
 import { esnRoutes } from '../config/router.config';
 import { esnComponents } from './components';
@@ -23,7 +24,8 @@ import { EsnRootComponent } from './root.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    ...esnMaterialModules
+    ...esnMaterialModules,
+    NgxEditorModule
   ],
   bootstrap: [EsnRootComponent]
 })

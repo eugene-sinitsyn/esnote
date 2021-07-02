@@ -1,0 +1,21 @@
+<ngx-editor
+  [editor]="editor"
+  [formControl]="formControl"
+  [placeholder]="placeholder"
+  (focusIn)="focused = true"
+  (focusOut)="focused = false"
+></ngx-editor>
+
+<ngx-editor-menu
+  [editor]="editor"
+  [toolbar]="[[
+    'bold',
+    'italic',
+    'underline',
+    'strike',
+    'bullet_list',
+    'ordered_list',
+    'code',
+    'link'
+  ]]"
+></ngx-editor-menu>

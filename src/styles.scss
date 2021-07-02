@@ -3,7 +3,8 @@
 @import './styles/material-overrides';
 @import './styles/list-item';
 @import './styles/scrollbar';
-@import './styles/drag-drop.scss';
+@import './styles/drag-drop';
+@import './styles/text-editor';
 
 @mixin esn-global-styles($theme) {
   $colors: mat-get-color-config($theme);
@@ -17,6 +18,7 @@
   @include esn-scrollbar($theme);
   @include esn-drag-drop($theme);
   @include esn-list-item();
+  @include esn-text-editor($theme);
 
   .esn-fg-primary { color: mat-color($primary-palette); }
   .esn-fg-accent { color: mat-color($accent-palette); }
