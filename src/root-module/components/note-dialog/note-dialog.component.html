@@ -2,12 +2,17 @@
   <mat-form-field appearance="outline">
     <mat-label>Name</mat-label>
     <input matInput formControlName="name" cdkFocusInitial />
-    <mat-hint align="end">{{ formGroup.value.name?.length || 0 }} / 64</mat-hint>
+    <mat-hint align="end">
+      {{ formGroup.value.name?.length || 0 }} / {{ nameMaxLength }}
+    </mat-hint>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Note</mat-label>
     <esn-text-editor id="note-editor" formControlName="text"></esn-text-editor>
+    <mat-hint align="end">
+      {{ noteLength$ | async }} / {{ textMaxLength }}
+    </mat-hint>
   </mat-form-field>
 </mat-dialog-content>
 

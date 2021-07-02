@@ -41,7 +41,7 @@ implements ControlValueAccessor, MatFormFieldControl<string>, OnInit, OnDestroy 
   public get shouldLabelFloat() { return this.focused || !this.empty; }
   public get disabled(): boolean  { return this.formControl.disabled; }
   public get errorState(): boolean {
-    return this.formControl.touched && this.formControl.invalid
+    return this.formControl.touched && this.formControl.invalid;
   }
 
   public ngOnInit(): void {
