@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Validators as EditorValidators } from 'ngx-editor';
@@ -33,7 +33,7 @@ export class EsnNoteDialogComponent {
   public readonly formGroup: FormGroup;
   public readonly noteLength$: Observable<number>;
 
-  public trySubmit(): void {
+  @HostListener('keydown.control.enter') public trySubmit(): void {
     if (!this.formGroup.valid) return;
     const note = new EsnNoteModel(this.formGroup.value);
     this.dialogRef.close(note);

@@ -1,3 +1,4 @@
+import { Platform } from '@angular/cdk/platform';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
@@ -6,4 +7,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./text-editor-help-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EsnTextEditorHelpDialogComponent {}
+export class EsnTextEditorHelpDialogComponent {
+  public constructor(platform: Platform) {
+    this.modifierKey =  platform.SAFARI || platform.IOS ? 'Mod' : 'Ctrl';
+  }
+
+  public readonly modifierKey: string;
+}
