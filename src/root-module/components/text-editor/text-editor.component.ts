@@ -1,9 +1,11 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, Self } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { Editor, Validators } from 'ngx-editor';
 import { Observable, Subscription } from 'rxjs';
+import { EsnTextEditorHelpDialogComponent } from '../text-editor-help-dialog/text-editor-help-dialog.component';
 
 @Component({
   selector: 'esn-text-editor',
@@ -16,7 +18,8 @@ export class EsnTextEditorComponent
 implements ControlValueAccessor, MatFormFieldControl<string>, OnInit, OnDestroy {
   public constructor(
     @Self() public readonly ngControl: NgControl,
-    private readonly changeDetectorRef: ChangeDetectorRef
+    private readonly changeDetectorRef: ChangeDetectorRef,
+    private readonly dialogService: MatDialog
   ) { ngControl.valueAccessor = this; }
 
   private readonly subscription: Subscription = new Subscription();
@@ -68,5 +71,9 @@ implements ControlValueAccessor, MatFormFieldControl<string>, OnInit, OnDestroy 
       target?.classList?.contains('mat-form-field-infix') ||
       target?.classList?.contains('mat-form-field-flex')
     ) this.editor.view.focus();
+  }
+
+  public openHelpDialog(): void {
+    this.dialogService.open(EsnTextEditorHelpDialogComponent);
   }
 }

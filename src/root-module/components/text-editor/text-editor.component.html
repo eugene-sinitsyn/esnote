@@ -18,4 +18,13 @@
     'code',
     'blockquote'
   ]]"
+  [customMenuRef]="helpTemplate"
 ></ngx-editor-menu>
+
+<ng-template #helpTemplate>
+  <div class="NgxEditor__Seperator"></div>
+  <div
+    class="NgxEditor__MenuItem NgxEditor__MenuItem--Icon"
+    (mousedown)="openHelpDialog()"
+  ><mat-icon>help_outline</mat-icon></div>
+</ng-template>
