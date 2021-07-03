@@ -4,7 +4,10 @@
   "scripts": {
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development"
+    "watch": "ng build --watch --configuration development",
+    "build:gh-pages": "ng build --configuration gh-pages",
+    "publish": "gh-pages -d dist/esnote -m Publish",
+    "deploy": "npm run build:gh-pages && npm run publish"
   },
   "private": true,
   "dependencies": {
@@ -18,6 +21,7 @@
     "@angular/platform-browser": "~12.0.5",
     "@angular/platform-browser-dynamic": "~12.0.5",
     "@angular/router": "~12.0.5",
+    "gh-pages": "^3.2.3",
     "ngx-editor": "^10.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",

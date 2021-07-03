@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { EsnConfirmDialogModel } from '../../../models/confirm-dialog.model';
 import { EsnNoteModel } from '../../../models/note.model';
 import { EsnSelectDialogModel } from '../../../models/select-dialog.model';
@@ -19,6 +21,9 @@ export class EsnNotesComponent {
     private readonly notesService: EsnNotesService,
     private readonly dialogService: MatDialog
   ) {}
+
+  public hasOtherLists$: Observable<boolean> =
+    this.notesService.lists$.pipe(map(lists => (lists?.length ?? 0) > 1));
 
   @Input() public listIndex: number;
   @Input() public notes: EsnNoteModel[];

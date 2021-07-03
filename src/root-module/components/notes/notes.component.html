@@ -45,7 +45,11 @@
     <mat-menu #listActions="matMenu">
       <button type="button" mat-menu-item (click)="openEditDialog(noteIndex)"
       ><mat-icon>edit</mat-icon>Edit</button>
-      <button type="button" mat-menu-item (click)="openMoveDialog(noteIndex)"
+      <button
+        type="button"
+        mat-menu-item
+        [disabled]="!(hasOtherLists$ | async)"
+        (click)="openMoveDialog(noteIndex)"
       ><mat-icon>arrow_back</mat-icon>Move to list</button>
       <button type="button" mat-menu-item (click)="openRemoveDialog(noteIndex)"
       ><mat-icon>delete</mat-icon>Delete</button>
