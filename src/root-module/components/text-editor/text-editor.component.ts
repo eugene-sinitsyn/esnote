@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { Editor, Validators } from 'ngx-editor';
 import { Observable, Subscription } from 'rxjs';
-import { EsnTextEditorHelpDialogComponent } from '../text-editor-help-dialog/text-editor-help-dialog.component';
+import { EsnHelpDialogComponent } from '../help-dialog/help-dialog.component';
 
 @Component({
   selector: 'esn-text-editor',
@@ -74,6 +74,6 @@ implements ControlValueAccessor, MatFormFieldControl<string>, OnInit, OnDestroy 
   }
 
   public openHelpDialog(): void {
-    this.dialogService.open(EsnTextEditorHelpDialogComponent);
+    this.dialogService.open(EsnHelpDialogComponent);
   }
 }

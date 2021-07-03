@@ -1,7 +1,9 @@
 <button
   type="button"
   mat-button
-  class="create esn-light-button"
+  class="create"
+  [class.esn-light-button]="!(empty$ | async)"
+  [class.esn-fg-primary]="empty$ | async"
   (click)="openCreateDialog()"
 ><mat-icon>add</mat-icon></button>
 

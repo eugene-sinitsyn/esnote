@@ -1,11 +1,14 @@
 <button
   type="button"
   mat-button
-  class="create esn-light-button"
+  class="create"
+  [class.esn-light-button]="notes?.length"
+  [class.esn-fg-primary]="!notes?.length"
   (click)="openCreateDialog()"
 ><mat-icon>add</mat-icon></button>
 
 <div
+  *ngIf="notes?.length; else hintTemplate"
   #dropList
   cdkDropList
   (cdkDropListDropped)="reorder($event.previousIndex, $event.currentIndex)"
@@ -49,3 +52,7 @@
     </mat-menu>
   </div>
 </div>
+
+<ng-template #hintTemplate>
+  <esn-notes-hint></esn-notes-hint>
+</ng-template>
