@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { EsnConfirmationDialogModel } from '../../../models/confirmation-dialog.model';
+import { EsnConfirmDialogModel } from '../../../models/confirm-dialog.model';
 
 @Component({
   selector: 'esn-confirm-dialog',
@@ -9,5 +9,5 @@ import { EsnConfirmationDialogModel } from '../../../models/confirmation-dialog.
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EsnConfirmDialogComponent {
-  public constructor(@Inject(MAT_DIALOG_DATA) public readonly data: EsnConfirmationDialogModel) {}
+  public constructor(@Inject(MAT_DIALOG_DATA) public readonly data: EsnConfirmDialogModel) {}
 }

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { EsnConfirmationDialogModel } from '../../../models/confirmation-dialog.model';
+import { EsnConfirmDialogModel } from '../../../models/confirm-dialog.model';
 import { EsnInputDialogModel } from '../../../models/input-dialog.model';
 import { EsnListModel } from '../../../models/list.model';
 import { EsnNotesService } from '../../../services/notes.service';
@@ -57,7 +57,7 @@ export class EsnListsComponent {
   }
 
   public async openRemoveDialog(listIndex: number, listName: string): Promise<void> {
-    const data = new EsnConfirmationDialogModel({
+    const data = new EsnConfirmDialogModel({
       message: `Delete "${listName}"?`,
       confirmButtonText: 'Delete'
     });

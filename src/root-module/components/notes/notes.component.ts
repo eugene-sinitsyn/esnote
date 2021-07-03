@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { EsnConfirmationDialogModel } from '../../../models/confirmation-dialog.model';
+import { EsnConfirmDialogModel } from '../../../models/confirm-dialog.model';
 import { EsnNoteModel } from '../../../models/note.model';
 import { EsnSelectDialogModel } from '../../../models/select-dialog.model';
 import { EsnNotesService } from '../../../services/notes.service';
@@ -58,7 +58,7 @@ export class EsnNotesComponent {
   }
 
   public async openRemoveDialog(noteIndex: number): Promise<void> {
-    const data = new EsnConfirmationDialogModel({
+    const data = new EsnConfirmDialogModel({
       message: `Delete "${this.notes[noteIndex]}"?`,
       confirmButtonText: 'Delete'
     });

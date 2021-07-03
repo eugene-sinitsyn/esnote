@@ -1,5 +1,5 @@
-export class EsnConfirmationDialogModel {
-  public constructor(raw?: Partial<EsnConfirmationDialogModel>) {
+export class EsnConfirmDialogModel {
+  public constructor(raw?: Partial<EsnConfirmDialogModel>) {
     this.message = raw?.message;
     this.confirmButtonText = raw?.confirmButtonText;
   }
