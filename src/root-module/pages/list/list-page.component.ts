@@ -30,7 +30,7 @@ export class EsnListPageComponent implements OnInit, OnDestroy {
     ]).subscribe(([lists, listIndex]) => {
       this.listIndex = listIndex;
       if (lists && Number.isInteger(listIndex) && listIndex >= lists.length)
-        this.router.navigate(['/']);
+        this.router.navigate(['/'], { replaceUrl: true });
       else {
         this.notes = (lists && lists[listIndex]?.notes) ?? [];
         this.changeDetectorRef.markForCheck();

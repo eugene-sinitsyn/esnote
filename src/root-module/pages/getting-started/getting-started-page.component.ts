@@ -33,6 +33,6 @@ export class EsnGettingStartedPageComponent {
     if (!name) return;
     const list = new EsnListModel({ name, notes: [] });
     this.notesService.createList(list);
-    this.router.navigate(['/list', 0]);
+    this.router.navigate(['/list', 0], { replaceUrl: true });
   }
 }
