@@ -1,7 +1,7 @@
-import { EsnHomePageComponent } from './home/home-page.component';
+import { EsnGettingStartedPageComponent } from './getting-started/getting-started-page.component';
 import { EsnListPageComponent } from './list/list-page.component';
 
 export const esnPages = [
-  EsnHomePageComponent,
+  EsnGettingStartedPageComponent,
   EsnListPageComponent
 ];

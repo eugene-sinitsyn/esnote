@@ -19,6 +19,7 @@ export class EsnNotesService {
 
   private listsValue: EsnListModel[] = [];
   public get lists(): EsnListModel[] { return this.listsValue; }
+  public get empty(): boolean { return !this.listsValue?.length; }
 
   public createList(list: EsnListModel): void {
     this.listsValue.unshift(list);

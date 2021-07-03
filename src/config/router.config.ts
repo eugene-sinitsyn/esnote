@@ -1,8 +1,9 @@
 import { Routes } from '@angular/router';
-import { EsnHomePageComponent } from '../root-module/pages/home/home-page.component';
+import { EsnGettingStartedPageComponent } from '../root-module/pages/getting-started/getting-started-page.component';
 import { EsnListPageComponent } from '../root-module/pages/list/list-page.component';
+import { EsnNoListsGuard } from '../guards/no-lists.guard';
 
 export const esnRoutes: Routes = [
-  { path: '', component: EsnHomePageComponent },
+  { path: '', component: EsnGettingStartedPageComponent, canActivate: [EsnNoListsGuard] },
   { path: 'list/:index', component: EsnListPageComponent }
 ];
