@@ -14,6 +14,7 @@ export class EsnInputDialogComponent {
     private readonly dialogRef: MatDialogRef<EsnInputDialogComponent, string>,
     @Inject(MAT_DIALOG_DATA) public readonly data: EsnInputDialogModel
   ) {
+    dialogRef.addPanelClass(['esn-dialog', 'wide']);
     const validators = [Validators.required];
     if (data?.maxLength) validators.push(Validators.maxLength(data.maxLength));
     this.control = new FormControl(data?.value || '', validators);

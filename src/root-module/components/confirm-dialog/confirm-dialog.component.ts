@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EsnConfirmDialogModel } from '../../../models/confirm-dialog.model';
 
 @Component({
@@ -9,5 +9,8 @@ import { EsnConfirmDialogModel } from '../../../models/confirm-dialog.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EsnConfirmDialogComponent {
-  public constructor(@Inject(MAT_DIALOG_DATA) public readonly data: EsnConfirmDialogModel) {}
+  public constructor(
+    dialogRef: MatDialogRef<EsnConfirmDialogComponent, boolean>,
+    @Inject(MAT_DIALOG_DATA) public readonly data: EsnConfirmDialogModel
+  ) { dialogRef.addPanelClass('esn-dialog'); }
 }

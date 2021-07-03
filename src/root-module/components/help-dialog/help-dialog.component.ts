@@ -1,5 +1,6 @@
 import { Platform } from '@angular/cdk/platform';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'esn-help-dialog',
@@ -8,7 +9,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EsnHelpDialogComponent {
-  public constructor(platform: Platform) {
+  public constructor(
+    dialogRef: MatDialogRef<EsnHelpDialogComponent, void>,
+    platform: Platform
+  ) {
+    dialogRef.addPanelClass('esn-dialog');
     this.modifierKey =  platform.SAFARI || platform.IOS ? 'Mod' : 'Ctrl';
   }
 

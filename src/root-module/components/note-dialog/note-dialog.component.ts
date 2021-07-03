@@ -21,6 +21,7 @@ export class EsnNoteDialogComponent implements OnInit, OnDestroy {
     private readonly formBuilder: FormBuilder,
     private readonly dialogService: MatDialog
   ) {
+    dialogRef.addPanelClass(['esn-dialog', 'wide']);
     dialogRef.disableClose = true;
     this.editMode = !!note;
     this.formGroup = this.createFormGroup(note);

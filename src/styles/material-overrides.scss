@@ -5,6 +5,14 @@
     .mat-drawer-inner-container { overflow: hidden; }
     .mat-drawer-backdrop.mat-drawer-shown { background-color: rgba(0, 0, 0, 0.5) !important; }
   }
-  mat-dialog-actions { justify-content: flex-end; }
   mat-form-field { display: block; }
+  mat-dialog-actions { justify-content: flex-end; }
+  .cdk-overlay-pane.esn-dialog {
+    min-width: 256px;
+    max-width: 90vw !important;
+    &.wide {
+      width: calc(100vw - 32px);
+      max-width: 512px !important;
+    }
+  }
 }
