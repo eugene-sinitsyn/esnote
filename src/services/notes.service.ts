@@ -1,6 +1,7 @@
 import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { EsnListModel } from '../models/list.model';
 import { EsnNoteModel } from '../models/note.model';
 
@@ -14,6 +15,7 @@ export class EsnNotesService {
   private readonly saveSubject: Subject<void> = new Subject<void>();
   public readonly lists$: Observable<EsnListModel[]> = this.listsSubject.asObservable();
   public readonly save$: Observable<void> = this.saveSubject.asObservable();
+  public readonly empty$: Observable<boolean> = this.lists$.pipe(map(lists => !lists?.length));
 
   private listsValue: EsnListModel[] = [];
   public get lists(): EsnListModel[] { return this.listsValue; }

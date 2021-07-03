@@ -23,6 +23,7 @@ export class EsnListsComponent {
   ) {}
 
   public readonly lists$: Observable<EsnListModel[]> = this.notesService.lists$;
+  public readonly empty$: Observable<boolean> = this.notesService.empty$;
 
   public async openCreateDialog(): Promise<void> {
     const data = new EsnInputDialogModel({

@@ -6,6 +6,7 @@
 ><mat-icon>add</mat-icon></button>
 
 <div
+  *ngIf="!(empty$ | async); else hintTemplate"
   #dropList
   cdkDropList
   (cdkDropListDropped)="reorder($event.previousIndex, $event.currentIndex)"
@@ -47,3 +48,7 @@
     </mat-menu>
   </div>
 </div>
+
+<ng-template #hintTemplate>
+  <esn-lists-hint></esn-lists-hint>
+</ng-template>
