@@ -1,0 +1,14 @@
+:host { display: block; }
+.get-started {
+  padding: 32px;
+  font-size: 16px;
+  mat-icon {
+    height: 64px;
+    width: 64px;
+    font-size: 64px;
+    margin-bottom: 16px;
+  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

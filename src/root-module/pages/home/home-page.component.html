@@ -1,0 +1,10 @@
+<div *ngIf="empty$ | async" class="get-started esn-fg-hint">
+  <mat-icon>flight_takeoff</mat-icon>
+  <div>
+    Get started by <a
+      href="javascript:void(0)"
+      class="esn-fg-primary"
+      (click)="openCreateListDialog()"
+    >adding a list</a>
+  </div>
+</div>
