@@ -21,7 +21,7 @@ implements ControlValueAccessor, MatFormFieldControl<string>, OnInit, OnDestroy 
 
   private readonly subscription: Subscription = new Subscription();
   public readonly controlType: string = 'rich-text';
-  public readonly editor: Editor = new Editor();;
+  public readonly editor: Editor = new Editor();
 
   private requiredValue: boolean = false;
   public focused: boolean = false;
@@ -61,5 +61,12 @@ implements ControlValueAccessor, MatFormFieldControl<string>, OnInit, OnDestroy 
   public registerOnChange(handler: any): void {}
 
   public setDescribedByIds(ids: string[]): void {}
-  public onContainerClick(event: MouseEvent): void { this.editor.view.focus(); }
+  public onContainerClick(event: MouseEvent): void {
+    const target = (event.target as HTMLElement);
+    if ( // exclude menu
+      target?.id === this.id ||
+      target?.classList?.contains('mat-form-field-infix') ||
+      target?.classList?.contains('mat-form-field-flex')
+    ) this.editor.view.focus();
+  }
 }

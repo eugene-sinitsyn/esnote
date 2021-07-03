@@ -4,36 +4,48 @@
   $colors: mat-get-color-config($theme);
   $primary-palette: map-get($colors, primary);
   $foreground-palette: map-get($colors, foreground);
+  $background-palette: map-get($colors, background);
 
   ngx-editor {
     display: block;
     .NgxEditor {
       background-color: transparent;
       border: none;
-    }
-    .NgxEditor__Content {
-      padding: 0;
-      color: map-get($foreground-palette, text);
+      &__Content {
+        padding: 0;
+        color: map-get($foreground-palette, text);
+        pre {
+          background-color: map-get($background-palette, unselected-chip);
+          border-radius: 4px;
+          padding: 4px;
+        }
+        code {
+          background-color: map-get($background-palette, unselected-chip);
+          padding: 0 4px;
+          border-radius: 4px;
+        }
+        pre > code { padding: 0; }
+      }
     }
   }
   ngx-editor-menu {
     display: block;
-    .NgxEditor__MenuBar {
-      background-color: transparent;
-      display: flex;
-      justify-content: center;
-      padding: 0;
-      margin-top: 32px;
-    }
-    .NgxEditor__MenuItem {
-      margin: 0 4px;
-      border-radius: 4px;
-      cursor: pointer;
-      &:hover { background-color: rgba(127, 127, 127, 0.5); }
-      svg { fill: map-get($foreground-palette, text); }
-    }
-    .NgxEditor__MenuItem--Active {
-      background-color: mat-color($primary-palette);
+    .NgxEditor {
+      &__MenuBar {
+        background-color: transparent;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin-top: 32px;
+      }
+      &__MenuItem {
+        margin: 0 4px !important;
+        border-radius: 4px;
+        cursor: pointer;
+        &:hover { background-color: rgba(127, 127, 127, 0.5); }
+        &--Active { background-color: mat-color($primary-palette); }
+        svg { fill: map-get($foreground-palette, text); }
+      }
     }
   }
 }
