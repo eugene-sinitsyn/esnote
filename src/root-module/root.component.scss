@@ -6,6 +6,12 @@ mat-sidenav-content {
   overflow: hidden;
   .page { flex-grow: 1; overflow: auto; }
 }
+.sidenav-flexbox {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  esn-side-menu { flex-grow: 1; }
+}
 mat-toolbar {
   padding: 0;
   button, esn-theme-toggle { height: 100%; width: 64px; }

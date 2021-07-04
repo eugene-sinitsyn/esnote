@@ -1,13 +1,17 @@
 <mat-sidenav-container autosize>
   <mat-sidenav #sidenav esnResponsive>
-    <mat-toolbar color="primary">
-      <button type="button" mat-button class="menu" (click)="sidenav.close()"
-      ><mat-icon>chevron_left</mat-icon></button>
-      <div style="flex-grow: 1;"></div>
-      <esn-theme-toggle></esn-theme-toggle>
-    </mat-toolbar>
-    <esn-side-menu></esn-side-menu>
+    <div class="sidenav-flexbox">
+      <mat-toolbar color="primary">
+        <button type="button" mat-button class="menu" (click)="sidenav.close()"
+        ><mat-icon>chevron_left</mat-icon></button>
+        <div style="flex-grow: 1;"></div>
+        <esn-theme-toggle></esn-theme-toggle>
+      </mat-toolbar>
+      <esn-side-menu></esn-side-menu>
+      <esn-install></esn-install>
+    </div>
   </mat-sidenav>
+
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <button type="button" mat-button class="menu" (click)="sidenav.toggle()"

@@ -1,0 +1,23 @@
+{
+  "name": "ESNOTE",
+  "short_name": "ESNOTE",
+  "theme_color": "#d81b60",
+  "background_color": "#303030",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "./",
+  "icons": [
+    {
+      "src": "assets/icon192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icon512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ]
+}
