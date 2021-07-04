@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "start": "ng serve",
-    "pwa": "npm-run-all --parallel watch:prod serve",
+    "pwa": "npx npm-run-all --parallel watch:prod serve",
     "deploy": "npm run build:gh-pages && npm run publish",
     "watch:prod": "ng build --watch --configuration production",
-    "serve": "http-server -p 4200 -c-1 dist/esnote",
-    "build:gh-pages": "ng build --configuration production",
+    "serve": "npx http-server -p 4200 -c-1 dist/esnote",
+    "build:gh-pages": "ng build --configuration gh-pages && npx ncp dist/esnote/index.html dist/esnote/404.html",
     "publish": "gh-pages -d dist/esnote -m Publish"
   },
   "private": true,
@@ -34,8 +34,6 @@
     "@angular/cli": "~12.0.5",
     "@angular/compiler-cli": "~12.0.5",
     "@types/node": "^12.11.1",
-    "http-server": "^0.12.3",
-    "npm-run-all": "^4.1.5",
     "typescript": "~4.2.3"
   }
 }
