@@ -39,14 +39,17 @@
         padding: 0;
         margin-top: 32px;
       }
-      &__Seperator { margin: 0 8px; }
       &__MenuItem {
-        margin: 0 4px !important;
+        margin: 0 !important;
         border-radius: 4px;
         cursor: pointer;
         &:hover { background-color: rgba(127, 127, 127, 0.5); }
         &--Active { background-color: mat-color($primary-palette); }
         svg { fill: map-get($foreground-palette, text); }
+        &:not(:hover):not(:active):not(:focus):not(:disabled) {
+          color: map-get($foreground-palette, secondary-text);
+          svg { fill: map-get($foreground-palette, secondary-text); }
+        }
       }
     }
   }
